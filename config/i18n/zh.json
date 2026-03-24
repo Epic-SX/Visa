@@ -1,0 +1,94 @@
+{
+  "common": {
+    "app_name": "签证申请风险评估系统",
+    "loading": "加载中...",
+    "error": "发生错误",
+    "completed": "已完成",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "next": "下一步",
+    "back": "返回",
+    "submit": "提交"
+  },
+  "auth": {
+    "login": "登录",
+    "logout": "退出",
+    "email": "电子邮箱",
+    "secret_key": "密钥",
+    "forgot_secret_key": "忘记密钥？",
+    "register": "注册",
+    "login_failed": "登录失败"
+  },
+  "diagnosis": {
+    "start": "开始评估",
+    "title": "签证申请风险评估",
+    "subtitle": "评估您的签证申请风险",
+    "step_form": {
+      "step_1": "基本信息",
+      "step_2": "商业计划",
+      "step_3": "资金与财务",
+      "step_4": "办公室与设施",
+      "step_5": "确认"
+    },
+    "questions": {
+      "business_plan_quality": "请选择商业计划质量",
+      "capital_amount": "请输入资本金额（日元）",
+      "office_type": "请选择办公室类型",
+      "business_experience_years": "请输入商业经验年数"
+    }
+  },
+  "pdf": {
+    "disclaimer_fixed": "本评估结果仅供参考。最终决定由入国管理局做出。",
+    "todo_label": "待办事项："
+  },
+  "results": {
+    "status_A": {
+      "title": "良好",
+      "description": "您的申请状况良好"
+    },
+    "status_B": {
+      "title": "需要注意",
+      "description": "需要一些改进"
+    },
+    "status_C": {
+      "title": "高风险",
+      "description": "存在重要问题"
+    },
+    "headline": "评估结果",
+    "todo_items": "行动项目",
+    "attention_zones": "需要关注的领域",
+    "disclaimer": "本评估结果仅供参考。最终决定由入国管理局做出。"
+  },
+  "payment": {
+    "checkout": "前往结算",
+    "product_better": "Better评估",
+    "product_best": "Best评估",
+    "product_set": "套餐计划",
+    "price": "价格",
+    "payment_required": "需要付款才能使用此功能",
+    "payment_completed": "付款已完成",
+    "payment_failed": "付款失败"
+  },
+  "professional": {
+    "dashboard": "仪表板",
+    "cases": "案件管理",
+    "bpo_datasets": "BPO数据集",
+    "profile": "个人资料",
+    "subscription": "订阅"
+  },
+  "admin": {
+    "audit_logs": "审计日志",
+    "users": "用户管理",
+    "content_approval": "内容审批",
+    "system_settings": "系统设置"
+  },
+  "errors": {
+    "unauthorized": "需要认证",
+    "forbidden": "权限不足",
+    "payment_required": "需要付款",
+    "not_found": "未找到",
+    "server_error": "服务器错误"
+  },
+  "compliance_notice": "注意：本系统仅提供评估信息。建议咨询专业人士。"
+}

@@ -1,0 +1,15 @@
+{
+  "_comment": "Copy to prohibited-terms-seed.json and populate with compliance-approved terms. The real file is gitignored.",
+  "ja": {
+    "patterns": ["PATTERN_JA_1", "PATTERN_JA_2"],
+    "replacements": { "pattern_ja_1": "SAFE_REPLACEMENT_JA_1" }
+  },
+  "en": {
+    "patterns": ["PATTERN_EN_1", "PATTERN_EN_2"],
+    "replacements": { "pattern_en_1": "safe_replacement_en_1" }
+  },
+  "zh": {
+    "patterns": ["PATTERN_ZH_1"],
+    "replacements": { "pattern_zh_1": "SAFE_REPLACEMENT_ZH_1" }
+  }
+}

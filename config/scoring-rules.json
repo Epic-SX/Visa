@@ -1,0 +1,202 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "description": "Scoring rules for VISA risk assessment (deterministic calculation only)",
+  "categories": {
+    "business_plan": {
+      "weight": 0.3,
+      "maxScore": 100,
+      "description": "Business plan quality and completeness",
+      "criteria": [
+        {
+          "condition": "business_plan_quality === 'excellent'",
+          "score": 100
+        },
+        {
+          "condition": "business_plan_quality === 'good'",
+          "score": 80
+        },
+        {
+          "condition": "business_plan_quality === 'average'",
+          "score": 60
+        },
+        {
+          "condition": "business_plan_quality === 'poor'",
+          "score": 30
+        },
+        {
+          "condition": "business_plan_quality === 'incomplete' || business_plan_quality === 'missing'",
+          "score": 0
+        }
+      ]
+    },
+    "capital_and_financial": {
+      "weight": 0.25,
+      "maxScore": 100,
+      "description": "Capital amount and financial stability",
+      "criteria": [
+        {
+          "condition": "capital_amount >= 10000000",
+          "score": 100
+        },
+        {
+          "condition": "capital_amount >= 7000000 && capital_amount < 10000000",
+          "score": 85
+        },
+        {
+          "condition": "capital_amount >= 5000000 && capital_amount < 7000000",
+          "score": 70
+        },
+        {
+          "condition": "capital_amount >= 3000000 && capital_amount < 5000000",
+          "score": 40
+        },
+        {
+          "condition": "capital_amount < 3000000",
+          "score": 10
+        }
+      ],
+      "modifiers": [
+        {
+          "condition": "financial_stability_rating === 'excellent'",
+          "modifier": 1.1
+        },
+        {
+          "condition": "financial_stability_rating === 'good'",
+          "modifier": 1.0
+        },
+        {
+          "condition": "financial_stability_rating === 'poor'",
+          "modifier": 0.7
+        }
+      ]
+    },
+    "office_and_facilities": {
+      "weight": 0.15,
+      "maxScore": 100,
+      "description": "Office setup and physical facilities",
+      "criteria": [
+        {
+          "condition": "office_type === 'dedicated_office' && office_lease_confirmed === true",
+          "score": 100
+        },
+        {
+          "condition": "office_type === 'shared_office' && office_lease_confirmed === true",
+          "score": 75
+        },
+        {
+          "condition": "office_type === 'home' && office_dedicated === true",
+          "score": 60
+        },
+        {
+          "condition": "office_type === 'home' && office_dedicated === false",
+          "score": 30
+        },
+        {
+          "condition": "office_type === 'none'",
+          "score": 0
+        }
+      ]
+    },
+    "business_experience": {
+      "weight": 0.15,
+      "maxScore": 100,
+      "description": "Applicant's business experience and expertise",
+      "criteria": [
+        {
+          "condition": "business_experience_years >= 10",
+          "score": 100
+        },
+        {
+          "condition": "business_experience_years >= 5 && business_experience_years < 10",
+          "score": 80
+        },
+        {
+          "condition": "business_experience_years >= 3 && business_experience_years < 5",
+          "score": 60
+        },
+        {
+          "condition": "business_experience_years >= 1 && business_experience_years < 3",
+          "score": 40
+        },
+        {
+          "condition": "business_experience_years < 1",
+          "score": 20
+        }
+      ],
+      "modifiers": [
+        {
+          "condition": "has_relevant_education === true",
+          "modifier": 1.15
+        },
+        {
+          "condition": "has_management_experience === true",
+          "modifier": 1.1
+        }
+      ]
+    },
+    "employment_plan": {
+      "weight": 0.1,
+      "maxScore": 100,
+      "description": "Employment and hiring plans",
+      "criteria": [
+        {
+          "condition": "plans_to_hire_employees === true && employee_count_planned >= 5",
+          "score": 100
+        },
+        {
+          "condition": "plans_to_hire_employees === true && employee_count_planned >= 2",
+          "score": 80
+        },
+        {
+          "condition": "plans_to_hire_employees === true && employee_count_planned === 1",
+          "score": 60
+        },
+        {
+          "condition": "plans_to_hire_employees === false",
+          "score": 40
+        }
+      ]
+    },
+    "visa_history": {
+      "weight": 0.05,
+      "maxScore": 100,
+      "description": "VISA application history",
+      "criteria": [
+        {
+          "condition": "previous_visa_rejections === 0 && previous_visa_approvals > 0",
+          "score": 100
+        },
+        {
+          "condition": "previous_visa_rejections === 0 && previous_visa_approvals === 0",
+          "score": 80
+        },
+        {
+          "condition": "previous_visa_rejections === 1",
+          "score": 40
+        },
+        {
+          "condition": "previous_visa_rejections >= 2",
+          "score": 10
+        }
+      ]
+    }
+  },
+  "thresholds": {
+    "A": {
+      "minScore": 80,
+      "description": "Good status - comprehensive preparation"
+    },
+    "B": {
+      "minScore": 50,
+      "maxScore": 79,
+      "description": "Caution - improvement needed"
+    },
+    "C": {
+      "maxScore": 49,
+      "description": "High risk - significant issues"
+    }
+  },
+  "attentionZoneThreshold": 60
+}

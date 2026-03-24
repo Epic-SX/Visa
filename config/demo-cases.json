@@ -1,0 +1,72 @@
+{
+  "defaultLocale": "en",
+  "defaultServiceType": "service1",
+  "cases": {
+    "A": {
+      "description": "Case A – Low Risk (A)",
+      "answers": {
+        "business_plan_quality": "excellent",
+        "capital_amount": 10000000,
+        "office_type": "dedicated_office",
+        "office_lease_confirmed": true,
+        "office_dedicated": true,
+        "business_experience_years": 5,
+        "plans_to_hire_employees": true,
+        "employee_count_planned": 3,
+        "previous_visa_rejections": 0,
+        "previous_visa_approvals": 1,
+        "financial_stability_rating": "good",
+        "business_scale": "medium"
+      },
+      "expected": {
+        "status": "A",
+        "totalScoreMin": 75,
+        "totalScoreMax": 100
+      }
+    },
+    "B": {
+      "description": "Case B – Moderate Risk (B)",
+      "answers": {
+        "business_plan_quality": "average",
+        "capital_amount": 6000000,
+        "office_type": "shared_office",
+        "office_lease_confirmed": true,
+        "office_dedicated": false,
+        "business_experience_years": 3,
+        "plans_to_hire_employees": false,
+        "employee_count_planned": 1,
+        "previous_visa_rejections": 0,
+        "previous_visa_approvals": 1,
+        "financial_stability_rating": "average",
+        "business_scale": "small"
+      },
+      "expected": {
+        "status": "B",
+        "totalScoreMin": 40,
+        "totalScoreMax": 79
+      }
+    },
+    "C": {
+      "description": "Case C – High Risk (C)",
+      "answers": {
+        "business_plan_quality": "incomplete",
+        "capital_amount": 3000000,
+        "office_type": "home",
+        "office_lease_confirmed": false,
+        "office_dedicated": false,
+        "business_experience_years": 0,
+        "plans_to_hire_employees": false,
+        "employee_count_planned": 0,
+        "previous_visa_rejections": 2,
+        "previous_visa_approvals": 0,
+        "financial_stability_rating": "poor",
+        "business_scale": "small"
+      },
+      "expected": {
+        "status": "C",
+        "totalScoreMin": 0,
+        "totalScoreMax": 49
+      }
+    }
+  }
+}

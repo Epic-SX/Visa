@@ -1,0 +1,94 @@
+{
+  "common": {
+    "app_name": "VISA申請リスク診断システム",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "completed": "完了しました",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "save": "保存",
+    "next": "次へ",
+    "back": "戻る",
+    "submit": "送信"
+  },
+  "auth": {
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "email": "メールアドレス",
+    "secret_key": "シークレットキー",
+    "forgot_secret_key": "シークレットキーをお忘れですか？",
+    "register": "新規登録",
+    "login_failed": "ログインに失敗しました"
+  },
+  "diagnosis": {
+    "start": "診断を開始",
+    "title": "VISA申請リスク診断",
+    "subtitle": "あなたのVISA申請のリスクを評価します",
+    "step_form": {
+      "step_1": "基本情報",
+      "step_2": "事業計画",
+      "step_3": "資本金・財務",
+      "step_4": "オフィス・施設",
+      "step_5": "確認"
+    },
+    "questions": {
+      "business_plan_quality": "事業計画書の品質を選択してください",
+      "capital_amount": "資本金額を入力してください（円）",
+      "office_type": "オフィスタイプを選択してください",
+      "business_experience_years": "事業経験年数を入力してください"
+    }
+  },
+  "pdf": {
+    "disclaimer_fixed": "本診断結果は参考情報です。最終的な判断は入国管理局が行います。",
+    "todo_label": "対応事項："
+  },
+  "results": {
+    "status_A": {
+      "title": "良好",
+      "description": "あなたの申請は良好な状態です"
+    },
+    "status_B": {
+      "title": "要注意",
+      "description": "いくつかの改善が必要です"
+    },
+    "status_C": {
+      "title": "リスク高",
+      "description": "重要な問題があります"
+    },
+    "headline": "診断結果",
+    "todo_items": "実施事項",
+    "attention_zones": "要注意領域",
+    "disclaimer": "本診断結果は参考情報です。最終的な判断は入国管理局が行います。"
+  },
+  "payment": {
+    "checkout": "決済へ進む",
+    "product_better": "Better診断",
+    "product_best": "Best診断",
+    "product_set": "セットプラン",
+    "price": "価格",
+    "payment_required": "この機能を利用するには決済が必要です",
+    "payment_completed": "決済が完了しました",
+    "payment_failed": "決済に失敗しました"
+  },
+  "professional": {
+    "dashboard": "ダッシュボード",
+    "cases": "案件管理",
+    "bpo_datasets": "BPOデータセット",
+    "profile": "プロフィール",
+    "subscription": "サブスクリプション"
+  },
+  "admin": {
+    "audit_logs": "監査ログ",
+    "users": "ユーザー管理",
+    "content_approval": "コンテンツ承認",
+    "system_settings": "システム設定"
+  },
+  "errors": {
+    "unauthorized": "認証が必要です",
+    "forbidden": "権限がありません",
+    "payment_required": "決済が必要です",
+    "not_found": "見つかりません",
+    "server_error": "サーバーエラーが発生しました"
+  },
+  "compliance_notice": "注意: 本システムは評価情報のみを提供します。専門家への相談をお勧めします。"
+}

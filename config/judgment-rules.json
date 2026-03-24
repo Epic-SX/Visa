@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-13",
+  "description": "Judgment rules for VISA risk assessment (deterministic logic only)",
+  "criteria": [
+    {
+      "id": "JR001",
+      "category": "business_plan",
+      "condition": "business_plan_quality === 'incomplete' || business_plan_quality === 'missing'",
+      "flag": "business_plan_insufficient",
+      "reasonCode": "BP_INSUFFICIENT",
+      "severity": "high",
+      "description": "Business plan is incomplete or missing"
+    },
+    {
+      "id": "JR002",
+      "category": "capital",
+      "condition": "capital_amount < 5000000",
+      "flag": "capital_below_minimum",
+      "reasonCode": "CAP_BELOW_MIN",
+      "severity": "high",
+      "description": "Capital amount is below 5 million JPY"
+    },
+    {
+      "id": "JR003",
+      "category": "office",
+      "condition": "office_type === 'home' && office_dedicated === false",
+      "flag": "office_not_dedicated",
+      "reasonCode": "OFF_NOT_DEDICATED",
+      "severity": "medium",
+      "description": "Office is at home but not dedicated space"
+    },
+    {
+      "id": "JR004",
+      "category": "experience",
+      "condition": "business_experience_years < 3",
+      "flag": "limited_experience",
+      "reasonCode": "EXP_LIMITED",
+      "severity": "medium",
+      "description": "Business experience is less than 3 years"
+    },
+    {
+      "id": "JR005",
+      "category": "employment",
+      "condition": "plans_to_hire_employees === false && business_scale === 'large'",
+      "flag": "no_employment_plan_for_large_business",
+      "reasonCode": "EMP_NO_PLAN",
+      "severity": "medium",
+      "description": "No employment plan despite large business scale"
+    },
+    {
+      "id": "JR006",
+      "category": "visa_history",
+      "condition": "previous_visa_rejections > 0",
+      "flag": "previous_rejections",
+      "reasonCode": "HIST_REJECTION",
+      "severity": "high",
+      "description": "Previous VISA application rejections exist"
+    },
+    {
+      "id": "JR007",
+      "category": "financial",
+      "condition": "financial_stability_rating === 'poor'",
+      "flag": "financial_instability",
+      "reasonCode": "FIN_UNSTABLE",
+      "severity": "high",
+      "description": "Financial stability is poor"
+    },
+    {
+      "id": "JR008",
+      "category": "documents",
+      "condition": "missing_documents.length > 3",
+      "flag": "many_missing_documents",
+      "reasonCode": "DOC_MISSING",
+      "severity": "medium",
+      "description": "More than 3 required documents are missing"
+    }
+  ],
+  "statusThresholds": {
+    "A": {
+      "maxHighSeverityFlags": 0,
+      "maxMediumSeverityFlags": 1,
+      "description": "Good status - minimal issues"
+    },
+    "B": {
+      "maxHighSeverityFlags": 1,
+      "maxMediumSeverityFlags": 3,
+      "description": "Caution status - some issues to address"
+    },
+    "C": {
+      "minHighSeverityFlags": 2,
+      "description": "High risk status - significant issues"
+    }
+  }
+}

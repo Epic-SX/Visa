@@ -1,0 +1,94 @@
+{
+  "common": {
+    "app_name": "VISA Application Risk Assessment System",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "completed": "Completed",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email Address",
+    "secret_key": "Secret Key",
+    "forgot_secret_key": "Forgot Secret Key?",
+    "register": "Register",
+    "login_failed": "Login failed"
+  },
+  "diagnosis": {
+    "start": "Start Diagnosis",
+    "title": "VISA Application Risk Assessment",
+    "subtitle": "Evaluate the risks of your VISA application",
+    "step_form": {
+      "step_1": "Basic Information",
+      "step_2": "Business Plan",
+      "step_3": "Capital & Finance",
+      "step_4": "Office & Facilities",
+      "step_5": "Confirmation"
+    },
+    "questions": {
+      "business_plan_quality": "Select business plan quality",
+      "capital_amount": "Enter capital amount (JPY)",
+      "office_type": "Select office type",
+      "business_experience_years": "Enter years of business experience"
+    }
+  },
+  "pdf": {
+    "disclaimer_fixed": "This assessment is for informational purposes only. Final decisions are made by the Immigration Bureau.",
+    "todo_label": "Todo:"
+  },
+  "results": {
+    "status_A": {
+      "title": "Good",
+      "description": "Your application is in good condition"
+    },
+    "status_B": {
+      "title": "Caution",
+      "description": "Some improvements are needed"
+    },
+    "status_C": {
+      "title": "High Risk",
+      "description": "Significant issues exist"
+    },
+    "headline": "Assessment Results",
+    "todo_items": "Action Items",
+    "attention_zones": "Areas Requiring Attention",
+    "disclaimer": "This assessment is for informational purposes only. Final decisions are made by the Immigration Bureau."
+  },
+  "payment": {
+    "checkout": "Proceed to Checkout",
+    "product_better": "Better Assessment",
+    "product_best": "Best Assessment",
+    "product_set": "Set Plan",
+    "price": "Price",
+    "payment_required": "Payment required to access this feature",
+    "payment_completed": "Payment completed",
+    "payment_failed": "Payment failed"
+  },
+  "professional": {
+    "dashboard": "Dashboard",
+    "cases": "Case Management",
+    "bpo_datasets": "BPO Datasets",
+    "profile": "Profile",
+    "subscription": "Subscription"
+  },
+  "admin": {
+    "audit_logs": "Audit Logs",
+    "users": "User Management",
+    "content_approval": "Content Approval",
+    "system_settings": "System Settings"
+  },
+  "errors": {
+    "unauthorized": "Authentication required",
+    "forbidden": "Insufficient permissions",
+    "payment_required": "Payment required",
+    "not_found": "Not found",
+    "server_error": "Server error occurred"
+  },
+  "compliance_notice": "Notice: This system provides assessment information only. Consult with immigration professionals for guidance."
+}

@@ -1,0 +1,161 @@
+name: Compliance Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  prohibited-terms-check:
+    runs-on: ubuntu-latest
+    name: Check for Prohibited Terms
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Check for prohibited terms
+        run: |
+          echo "Checking for prohibited terms in codebase..."
+          
+          # Encoded terms list (base64 format)
+          ENCODED_TERMS=(
+            "c3VjY2VzcyByYXRl"
+            "cHJvYmFiaWxpdHk="
+            "bGlrZWxpaG9vZA=="
+            "Z3VhcmFudGVl"
+            "5ZCI5qC8"
+            "6YCa6YGO"
+            "5oiQ5Yqf546H"
+            "5Y+v6IO95oCn"
+            "5L+d6Ki8"
+            "YXBwcm92YWwgcmF0ZQ=="
+            "Y2hhbmNl"
+            "cHJlZGljdA=="
+            "cHJlZGljdGlvbg=="
+          )
+          
+          # Search for each prohibited term
+          FOUND=0
+          for encoded in "${ENCODED_TERMS[@]}"; do
+            term=$(echo "$encoded" | base64 -d)
+            echo "Checking for prohibited pattern..."
+            if grep -r -i "$term" \
+              --include="*.ts" \
+              --include="*.tsx" \
+              --include="*.js" \
+              --include="*.jsx" \
+              --include="*.json" \
+              --exclude-dir=node_modules \
+              --exclude-dir=dist \
+              --exclude-dir=build \
+              --exclude-dir=.next \
+              --exclude="*.test.ts" \
+              --exclude="*.test.js" \
+              --exclude="compliance-check.yml" \
+              .; then
+              echo "❌ ERROR: Found prohibited pattern"
+              FOUND=1
+            fi
+          done
+          
+          if [ $FOUND -eq 1 ]; then
+            echo ""
+            echo "================================================================"
+            echo "❌ COMPLIANCE CHECK: VIOLATIONS DETECTED"
+            echo "================================================================"
+            echo "Prohibited terms were found in the codebase."
+            echo "These terms violate legal compliance requirements."
+            echo "Please remove all instances of prohibited terms."
+            echo "================================================================"
+            exit 1
+          else
+            echo ""
+            echo "================================================================"
+            echo "✅ COMPLIANCE CHECK: COMPLETE"
+            echo "================================================================"
+            echo "No prohibited terms found in the codebase."
+            echo "================================================================"
+          fi
+      
+      - name: Check for new Function usage
+        run: |
+          echo "Checking for dangerous 'new Function' pattern..."
+          
+          if grep -r "new Function" \
+            --include="*.ts" \
+            --include="*.tsx" \
+            --include="*.js" \
+            --include="*.jsx" \
+            --exclude-dir=node_modules \
+            --exclude-dir=dist \
+            --exclude-dir=build \
+            --exclude="*.test.ts" \
+            --exclude="*.test.js" \
+            --exclude="condition-evaluator.ts" \
+            .; then
+            echo "❌ ERROR: Found 'new Function' usage"
+            echo "This pattern is prohibited for security reasons."
+            exit 1
+          else
+            echo "✅ Check complete: No 'new Function' usage found"
+          fi
+      
+      - name: Check for eval usage
+        run: |
+          echo "Checking for dangerous 'eval' pattern..."
+          
+          if grep -r -E "\beval\(" \
+            --include="*.ts" \
+            --include="*.tsx" \
+            --include="*.js" \
+            --include="*.jsx" \
+            --exclude-dir=node_modules \
+            --exclude-dir=dist \
+            --exclude-dir=build \
+            --exclude="*.test.ts" \
+            --exclude="*.test.js" \
+            .; then
+            echo "❌ ERROR: Found 'eval' usage"
+            echo "This pattern is prohibited for security reasons."
+            exit 1
+          else
+            echo "✅ Check complete: No 'eval' usage found"
+          fi
+
+  architecture-check:
+    runs-on: ubuntu-latest
+    name: Verify 3-Layer Architecture
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Check judgment layer imports
+        run: |
+          echo "Checking that judgment layer doesn't import from generation..."
+          
+          if grep -r "from.*generation" \
+            src/backend/judgment/ \
+            --include="*.ts" \
+            --include="*.tsx"; then
+            echo "❌ ERROR: Judgment layer imports from generation layer"
+            exit 1
+          else
+            echo "✅ Check complete: Judgment layer is properly isolated"
+          fi
+      
+      - name: Check scoring layer imports
+        run: |
+          echo "Checking that scoring layer doesn't import from generation..."
+          
+          if grep -r "from.*generation" \
+            src/backend/scoring/ \
+            --include="*.ts" \
+            --include="*.tsx"; then
+            echo "❌ ERROR: Scoring layer imports from generation layer"
+            exit 1
+          else
+            echo "✅ Check complete: Scoring layer is properly isolated"
+          fi
